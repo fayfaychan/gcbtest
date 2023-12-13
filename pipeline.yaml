@@ -1,0 +1,7 @@
+spec:
+  tasks:
+  - name: say-hello
+    taskSpec:
+      steps:
+      - image: ubuntu
+        script: echo 'hello there'
