@@ -48,4 +48,4 @@ tasks:
     steps:
     - image: gcr.io/cloud-builders/docker
       script: |
-        echo -n "{\"uri\":\"$(params._LOUHI_REPOSITORY_URL)\",\"digest\":\"$(params._LOUHI_REF_SHA)\"}" | tee $(results.image-ARTIFACT_INPUTS.path)
+        echo -n "{\"uri\":\"$(params._LOUHI_REPOSITORY_URL)\",\"digest\":\"$(params._LOUHI_REF_SHA)\"}"
