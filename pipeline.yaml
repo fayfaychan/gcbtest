@@ -1,7 +1,52 @@
-spec:
-  tasks:
-  - name: say-hello
-    taskSpec:
-      steps:
-      - image: ubuntu
-        script: echo 'hello there'
+workspaces:
+- name: default-workspace
+tasks:
+- name: clone-repo
+  taskRef:
+    resolver: gcb-repo
+    params:
+    - name: repository
+      value: gcb-catalog.googlesource.com/git-tkn
+    - name: revision
+      value: main
+    - name: pathInRepo
+      value: task/git-clone/git-clone.yaml
+  params:
+  - name: revision
+    value: $(params._LOUHI_REF_SHA)  # injected by Louhi when running the workflow
+  - name: url
+    value: $(params._LOUHI_REPOSITORY_URL) # injected by Louhi when running the workflow
+  workspaces:
+  - name: output
+    workspace: default-workspace
+- name: docker-build-push
+  runAfter:
+  - "clone-repo"
+  workspaces:
+  - name: source
+    workspace: default-workspace
+  taskSpec:
+    workspaces:
+    - name: source
+    results:
+    - name: image-ARTIFACT_INPUTS
+      type: object
+      description: Info of the source code used for building the image.
+      properties:
+        uri:
+          type: string
+        digest:
+          type: string
+    - name: image-ARTIFACT_OUTPUTS
+      description: Info of the image just built.
+      type: object
+      properties:
+        uri:
+          type: string
+        digest:
+          type: string
+    steps:
+    - image: gcr.io/cloud-builders/docker
+      script: |
+        echo -n "{\"uri\":\"${image_uri}\",\"digest\":\"${image_digest}\"}" | tee $(results.image-ARTIFACT_OUTPUTS.path)
+        echo -n "{\"uri\":\"$(params._LOUHI_REPOSITORY_URL)\",\"digest\":\"$(params._LOUHI_REF_SHA)\"}" | tee $(results.image-ARTIFACT_INPUTS.path)
