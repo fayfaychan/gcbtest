@@ -2,7 +2,11 @@ params:
 - name: echo
 tasks:
 - name: echo
+  params:
+    - name: echo
   taskSpec:
+    params:
+    - name: echo
     steps:
     - image: ubuntu
       script: |
