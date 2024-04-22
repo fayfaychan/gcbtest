@@ -4,10 +4,10 @@ spec:
   tasks:
   - name: echo
     params:
-    - name: echo
+    - name: echo2
       value: "$(params.echo)"
     taskSpec:
       steps:
       - image: ubuntu
         script: |
-          echo -n "$(params.echo)"
+          echo -n "$(params.echo2)"
