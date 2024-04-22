@@ -3,11 +3,12 @@ kind: Pipeline
 spec:
   params:
     - name: echo
+      default: "hello"
   tasks:
   - name: echo
     # params:
-    # - name: echo2
-      # value: "$(params.echo)"
+    # - name: echo
+    #   value: "$(params.echo)"
     taskSpec:
       # params:
       # - name: echo2
