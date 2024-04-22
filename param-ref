@@ -1,0 +1,7 @@
+tasks:
+- name: clone-repo
+  taskSpec:
+    steps:
+    - image: ubuntu
+      script: |
+        echo -n "$(params.echo)"
