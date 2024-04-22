@@ -5,7 +5,7 @@ spec:
     - name: echo
   tasks:
   - name: echo
-    params:
+    # params:
     # - name: echo2
       # value: "$(params.echo)"
     taskSpec:
