@@ -1,5 +1,5 @@
 tasks:
-- name: clone-repo
+- name: echo
   taskSpec:
     steps:
     - image: ubuntu
