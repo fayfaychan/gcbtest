@@ -3,6 +3,9 @@ kind: Pipeline
 spec:
   tasks:
   - name: echo
+    params:
+    - name: echo
+      value: "$(params.echo)"
     taskSpec:
       steps:
       - image: ubuntu
