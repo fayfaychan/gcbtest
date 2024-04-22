@@ -1,13 +1,16 @@
-params:
-- name: echo
-tasks:
-- name: echo
+apiVersion: tekton.dev/v1
+kind: Pipeline
+spec:
   params:
-    - name: echo
-  taskSpec:
+  - name: echo
+  tasks:
+  - name: echo
     params:
-    - name: echo
-    steps:
-    - image: ubuntu
-      script: |
-        echo -n "$(params.echo)"
+      - name: echo
+    taskSpec:
+      params:
+      - name: echo
+      steps:
+      - image: ubuntu
+        script: |
+          echo -n "$(params.echo)"
