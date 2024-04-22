@@ -7,6 +7,8 @@ spec:
     - name: echo2
       value: "$(params.echo)"
     taskSpec:
+      params:
+      - name: echo2
       steps:
       - image: ubuntu
         script: |
