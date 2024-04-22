@@ -6,13 +6,13 @@ spec:
   tasks:
   - name: echo
     params:
-    - name: echo2
+    # - name: echo2
       # value: "$(params.echo)"
     taskSpec:
-      params:
-      - name: echo2
+      # params:
+      # - name: echo2
       steps:
       - name: test
         image: ubuntu
         script: |
-          echo -n "$(params.echo2)"
+          echo -n "$(params.echo)"
