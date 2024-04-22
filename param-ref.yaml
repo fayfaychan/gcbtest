@@ -1,7 +1,5 @@
 apiVersion: tekton.dev/v1
 kind: Pipeline
-metadata:
-  name: param-ref
 spec:
   params:
     - name: echo
