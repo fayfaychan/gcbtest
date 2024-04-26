@@ -4,4 +4,4 @@ tasks:
     steps:
       - image: "ubuntu"
         script: |
-          echo "hello world"
+          echo "hello world -1"
