@@ -16,3 +16,4 @@ spec:
         image: ubuntu
         script: |
           echo -n "$(params.echo)"
+          echo -n hello
