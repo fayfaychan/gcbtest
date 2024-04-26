@@ -1,0 +1,7 @@
+tasks:
+- name: "print-hello"
+  taskSpec:
+    steps:
+      - image: "ubuntu"
+        script: |
+          echo "hello world"
