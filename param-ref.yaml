@@ -1,12 +1,14 @@
 apiVersion: tekton.dev/v1
 kind: Pipeline
+metadata:
+  name: param-ref
 spec:
   params:
     - name: echo
   tasks:
   - name: echo
     params:
-    - name: echo
+    - name: echo2
       value: "$(params.echo)"
     taskSpec:
       params:
@@ -15,5 +17,4 @@ spec:
       - name: test
         image: ubuntu
         script: |
-          echo -n "$(params.echo)"
-          echo -n hello
+          echo -n "$(params.echo2)"
