@@ -1,0 +1,26 @@
+apiVersion: tekton.dev/v1 # or tekton.dev/v1beta1
+kind: Task
+spec:
+  workspaces:
+    - name: default-workspace
+  steps:
+    - name: build
+      image: us-docker.pkg.dev/gcb-catalog-release/preview/docker/cli
+      workingDir: "$(workspaces.default-workspace.path)"
+      args:
+        - build
+        - -t
+        - us-central1-docker.pkg.dev/emilyyfchen-test/wf-test/hello:v1
+        - .
+    - name: run
+      image: us-docker.pkg.dev/gcb-catalog-release/preview/docker/cli
+      workingDir: "$(workspaces.default-workspace.path)"
+      args:
+        - run
+        - us-central1-docker.pkg.dev/emilyyfchen-test/wf-test/hello:v1
+    - name: push
+      image: us-docker.pkg.dev/gcb-catalog-release/preview/docker/cli
+      workingDir: "$(workspaces.default-workspace.path)"
+      args:
+        - push
+        - us-central1-docker.pkg.dev/emilyyfchen-test/wf-test/hello:v1
