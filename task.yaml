@@ -1,7 +1,9 @@
-apiVersion: tekton.dev/v1
+apiVersion: tekton.dev/v1 # or tekton.dev/v1beta1
 kind: Task
+metadata:
+  name: example-task-name
 spec:
   steps:
-    - name: build
-      image: busybox
-      script: echo hello
+    - name: ubuntu-example
+      image: ubuntu
+      args: ["echo", "hello"]
