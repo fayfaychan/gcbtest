@@ -4,6 +4,7 @@ metadata:
   name: example-task-name
 spec:
   steps:
-    - name: ubuntu-example
+    - name: echo
       image: ubuntu
-      args: ["echo", "hello"]
+      command: ["echo"]
+      args: ["hello"]
