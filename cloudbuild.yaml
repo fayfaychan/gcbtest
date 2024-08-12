@@ -1,10 +1,10 @@
 steps:
 - name: 'gcr.io/cloud-builders/docker'
   script: |
-    echo "FROM ubuntu" > Dockerfile
-    echo "RUN apt-get update" >> Dockerfile
-    echo "ENTRYPOINT ['echo', '$BUILD_ID']" >> Dockerfile
-    docker build -t us-central1-docker.pkg.dev/emilyyfchen-test/wf-test/hello .
+    echo "FROM ubuntu" > Dockerfile1
+    echo "RUN apt-get update" >> Dockerfile1
+    echo "ENTRYPOINT ['echo', '$BUILD_ID']" >> Dockerfile1
+    docker build -t us-central1-docker.pkg.dev/emilyyfchen-test/wf-test/hello -f Dockerfile1 .
 images: ['us-central1-docker.pkg.dev/emilyyfchen-test/wf-test/hello']
 serviceAccount: 'projects/emilyyfchen-test/serviceAccounts/testuser@emilyyfchen-test.iam.gserviceaccount.com'
 options:
