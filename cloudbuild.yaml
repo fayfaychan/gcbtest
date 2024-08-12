@@ -3,11 +3,12 @@ steps:
   script: |
     echo "FROM ubuntu" > Dockerfile
     echo "RUN apt-get update" >> Dockerfile
-    echo "ENTRYPOINT ['echo', 'hello']" >> Dockerfile
+    echo "ENTRYPOINT ['echo', '$BUILD_ID']" >> Dockerfile
     docker build -t us-central1-docker.pkg.dev/emilyyfchen-test/wf-test/hello .
 images: ['us-central1-docker.pkg.dev/emilyyfchen-test/wf-test/hello']
 serviceAccount: 'projects/emilyyfchen-test/serviceAccounts/testuser@emilyyfchen-test.iam.gserviceaccount.com'
 options:
+  automapSubstitutions: true
   logging: CLOUD_LOGGING_ONLY
   requestedVerifyOption: VERIFIED
 
