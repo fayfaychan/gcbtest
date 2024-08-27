@@ -1,3 +1,3 @@
 FROM ubuntu
 RUN apt-get update
-ENTRYPOINT ["echo", "hello"]
+ENTRYPOINT ["echo", "hello!"]
